@@ -1,0 +1,45 @@
+{
+  "name": "xhs-travel-studio",
+  "version": "0.8.9",
+  "private": true,
+  "description": "AI-assisted China travel content review and publishing workspace",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "web": "node server.js",
+    "pack:win": "electron-builder --win portable"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "electron": "^38.1.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "cn.travelstudio.xhs",
+    "productName": "旅图工坊",
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "xhs-integration.js",
+      "tripadvisor-integration.js",
+      "pipeline-runner.js",
+      "pipeline-schema.json",
+      "public/**/*",
+      "content-skill/**/*",
+      "agent-skills/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "artifactName": "Travel-Studio-${version}-Portable.${ext}"
+    }
+  }
+}

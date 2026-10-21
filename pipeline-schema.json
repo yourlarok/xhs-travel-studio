@@ -1,0 +1,116 @@
+{
+  "type": "object",
+  "properties": {
+    "evidence_summary": {
+      "type": "object",
+      "properties": {
+        "dominant_needs": { "type": "array", "items": { "type": "string" } },
+        "traveler_frictions": { "type": "array", "items": { "type": "string" } },
+        "unknowns": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["dominant_needs", "traveler_frictions", "unknowns"],
+      "additionalProperties": false
+    },
+    "calendar": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "properties": {
+          "week": { "type": "integer" },
+          "theme": { "type": "string" },
+          "posts": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "angle": { "type": "string" },
+                "duration": { "type": "string" },
+                "budget": { "type": "string" },
+                "difficulty": { "type": "string", "enum": ["easy", "moderate", "complex"] },
+                "evidence_refs": { "type": "array", "items": { "type": "string" } }
+              },
+              "required": ["title", "angle", "duration", "budget", "difficulty", "evidence_refs"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": ["week", "theme", "posts"],
+        "additionalProperties": false
+      }
+    },
+    "article": {
+      "type": "object",
+      "properties": {
+        "topic": { "type": "string" },
+        "title": { "type": "string" },
+        "series": { "type": "string" },
+        "caption": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "coordinates": {
+          "type": "object",
+          "properties": {
+            "duration": { "type": "string" },
+            "budget": { "type": "string" },
+            "difficulty": { "type": "string", "enum": ["easy", "moderate", "complex"] },
+            "main_friction": { "type": "string" }
+          },
+          "required": ["duration", "budget", "difficulty", "main_friction"],
+          "additionalProperties": false
+        },
+        "cards": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "properties": {
+              "page": { "type": "integer" },
+              "role": { "type": "string" },
+              "layout": { "type": "string" },
+              "eyebrow": { "type": "string" },
+              "headline": { "type": "string" },
+              "subhead": { "type": "string" },
+              "facts": { "type": "array", "items": { "type": "string" } },
+              "image_prompt": { "type": "string" },
+              "image_alt": { "type": "string" }
+            },
+            "required": ["page", "role", "layout", "eyebrow", "headline", "subhead", "facts", "image_prompt", "image_alt"],
+            "additionalProperties": false
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "claim": { "type": "string" },
+              "url": { "type": "string" },
+              "status": { "type": "string", "enum": ["official", "observed", "traveler_report", "editorial", "unconfirmed"] }
+            },
+            "required": ["claim", "url", "status"],
+            "additionalProperties": false
+          }
+        },
+        "quality": {
+          "type": "object",
+          "properties": {
+            "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "warnings": { "type": "array", "items": { "type": "string" } },
+            "ready_for_review": { "type": "boolean" }
+          },
+          "required": ["score", "warnings", "ready_for_review"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["topic", "title", "series", "caption", "tags", "coordinates", "cards", "sources", "quality"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["evidence_summary", "calendar", "article"],
+  "additionalProperties": false
+}

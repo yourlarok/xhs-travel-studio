@@ -1,0 +1,48 @@
+.slide{padding:23px 23px 30px;justify-content:flex-start;font-family:Inter,"PingFang SC",sans-serif}
+.slide h3{font:500 25px/1.02 Georgia,"Songti SC",serif;letter-spacing:-.025em}
+.slide small{display:block;font-weight:800;letter-spacing:.15em;font-size:8px}
+.slide p{font-size:10px;line-height:1.55}
+.guide-footer{position:absolute!important;left:23px;right:23px;bottom:11px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid currentColor;padding-top:6px;font-size:6.5px;letter-spacing:.11em;opacity:.65}
+.guide-footer b{font-weight:800}
+
+.layout-cover{background-size:cover!important;background-position:center!important;justify-content:flex-end}
+.layout-cover.photo-teahouse{background-image:linear-gradient(180deg,rgba(17,24,19,.04) 10%,rgba(12,18,14,.88) 100%),url("assets/chengdu-teahouse.png")!important}
+.layout-cover:before,.layout-photo:before{display:none}
+.cover-copy{padding-bottom:13px}.cover-copy small{color:#f6d886}
+.cover-copy h3{font-size:34px;max-width:225px;margin:8px 0 10px}
+.cover-copy p{max-width:210px;font-size:11px;margin-bottom:10px}
+.cover-copy em,.photo-caption em{display:inline-block;border-top:1px solid rgba(255,255,255,.5);padding-top:7px;font-style:normal;font-size:8px;letter-spacing:.06em}
+
+.layout-paper{background:#f4eedf!important;color:#213128!important}
+.layout-paper:before,.layout-route:before,.layout-phrase:before,.layout-choice:before,.layout-save:before{display:none}
+.layout-paper small{color:#c94337}.layout-paper h3{margin:11px 0 10px;max-width:235px}
+.layout-paper .intro{font:italic 12px/1.5 Georgia,serif;color:#536057;border-left:2px solid #c94337;padding-left:10px}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #8d948a;border-bottom:1px solid #8d948a;margin:20px 0 14px}
+.metric-grid div{padding:12px 4px 10px;border-right:1px solid #b9b9ad}.metric-grid div:last-child{border-right:0}
+.metric-grid b,.metric-grid span{display:block}.metric-grid b{font:500 18px Georgia,serif;color:#c94337}.metric-grid span{font-size:7px;margin-top:4px;color:#68726a}
+.margin-note{font-size:8px!important;text-transform:uppercase;letter-spacing:.06em;color:#677168}
+
+.layout-route{background:#e8e1d0!important;color:#1c2c24!important}.layout-route small{color:#c94337}.layout-route h3{margin:10px 0 18px}
+.route-line{position:relative;margin-left:8px;padding-left:25px}.route-line:before{content:"";position:absolute;left:8px;top:13px;bottom:18px;width:1px;background:#b9483c}
+.route-stop{display:grid;grid-template-columns:46px 1fr;position:relative;padding-bottom:14px}.route-stop i{position:absolute;left:-24px;top:0;width:17px;height:17px;border-radius:50%;background:#b9483c;color:#fff;display:grid;place-items:center;font:normal 8px Georgia,serif}
+.route-stop time{font:500 14px Georgia,serif;color:#b9483c}.route-stop b{font-size:10px}.route-stop span{grid-column:2;font-size:8px;color:#677168;margin-top:2px}
+.route-note{background:#263a30;color:#f5eddb;padding:9px 10px;margin-top:2px!important;font-size:8px!important}
+
+.layout-photo{background-size:cover!important;background-position:center!important;justify-content:flex-end}
+.layout-photo.photo-breakfast{background-image:linear-gradient(180deg,rgba(13,18,15,.05),rgba(13,18,15,.88)),url("assets/chengdu-breakfast.png")!important}
+.photo-caption{background:rgba(25,34,28,.88);padding:14px 14px 12px;margin:0 -5px 12px;border-top:2px solid #df5b49}
+.photo-caption small{color:#f2cf73}.photo-caption h3{font-size:23px;margin:7px 0 6px}.photo-caption p{margin-bottom:8px}
+
+.layout-phrase{background:#efe6d3!important;color:#203027!important;justify-content:center;text-align:center}.layout-phrase small{color:#b84438}
+.layout-phrase .intent{font:italic 14px Georgia,serif;margin:14px 0 8px}.layout-phrase h3{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:34px;letter-spacing:.03em;color:#b84438;margin:7px 0}
+.layout-phrase .pinyin{letter-spacing:.12em;text-transform:uppercase;font-size:8px;color:#6f746c}.phrase-note{text-align:left;border-top:1px solid #a29d90;margin-top:23px;padding-top:12px;font-size:9px;line-height:1.55}
+
+.layout-choice{background:#f1eddf!important;color:#1c2c24!important}.layout-choice small{color:#b84438}.layout-choice h3{margin:10px 0 16px}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #777f78;border-bottom:1px solid #777f78}.choice-grid>div{padding:13px 10px 12px 0}.choice-grid>div+div{border-left:1px solid #a9aaa2;padding-left:12px}
+.choice-grid span{font-size:7px;color:#b84438;letter-spacing:.12em}.choice-grid b{display:block;font:500 15px Georgia,serif;margin:6px 0}.choice-grid p{font-size:8px;line-height:1.65;color:#59645c}.choice-note{font:italic 10px/1.55 Georgia,serif;margin-top:15px!important;color:#3c5044}
+
+.layout-save{background:#22342b!important;color:#f4eedf!important}.layout-save small{color:#ebbd56}.layout-save h3{margin:11px 0 17px;max-width:235px}
+.save-list{border-top:1px solid #7e8c83}.save-list p{display:flex;gap:10px;align-items:center;margin:0;padding:10px 0;border-bottom:1px solid #536259;font-size:9px}.save-list i{font-style:normal;color:#ebbd56;font-size:12px}.next-note{margin-top:14px;color:#b9c6bd;font-size:8px;line-height:1.5}
+
+.skill-active{display:flex;align-items:center;gap:11px;background:#edf2ec;border:1px solid #d6e1d7;border-radius:12px;padding:11px 12px;margin:12px 0 18px}.skill-active>span{width:25px;height:25px;border-radius:50%;background:#2f604a;color:#fff;display:grid;place-items:center;font-size:12px}.skill-active strong,.skill-active small{display:block}.skill-active strong{font-size:12px}.skill-active small{font-size:10px;color:#69736b;margin-top:3px;font-weight:400}
+.production-photo{background-size:cover;background-position:center}.production-photo:before{background:linear-gradient(180deg,rgba(17,24,20,.06),rgba(17,24,20,.82))}.production-photo .save-list{background:rgba(24,35,29,.55);backdrop-filter:blur(4px);border-radius:10px;padding:9px}.production-photo .save-list p{border-color:rgba(255,255,255,.25)}

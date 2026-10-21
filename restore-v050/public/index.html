@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self'; connect-src 'self' http://127.0.0.1:* https:;">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>旅图工坊 · China Travel Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-editorial.css">
+  <link rel="stylesheet" href="styles-platform.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="mark">旅</span><div><strong>旅图工坊</strong><small>China Travel Studio</small></div></div>
+      <nav id="nav">
+        <button class="nav-item active" data-view="connect"><span>●</span>小红书连接</button>
+        <button class="nav-item workspace-nav" data-view="today"><span>◫</span>今日草稿</button>
+        <button class="nav-item workspace-nav" data-view="queue"><span>✓</span>审核队列 <b id="queueCount">1</b></button>
+        <button class="nav-item workspace-nav" data-view="discovery"><span>⌁</span>需求雷达</button>
+        <button class="nav-item workspace-nav" data-view="calendar"><span>▦</span>内容日历</button>
+        <button class="nav-item workspace-nav" data-view="analytics"><span>⌁</span>数据分析</button>
+        <button class="nav-item workspace-nav" data-view="agent"><span>◇</span>Agent装配</button>
+        <button class="nav-item workspace-nav" data-view="settings"><span>⚙</span>自动化设置</button>
+      </nav>
+      <div class="run-card">
+        <div class="pulse"></div>
+        <div><small>北京时间 · UTC+8</small><strong id="beijingClock">--:--:--</strong><em id="nextRun">下次 09:00</em></div>
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div><p class="eyebrow">AI CONTENT WORKSPACE</p><h1 id="viewTitle">连接小红书</h1></div>
+        <div class="header-actions" hidden><button class="ghost" id="generateBtn">重新生成</button><button class="primary" id="approveBtn">通过并准备发布</button></div>
+      </header>
+
+      <section class="view active" id="connectView">
+        <div class="login-home">
+          <section class="login-hero">
+            <div class="login-brandmark">旅</div>
+            <p class="eyebrow">XIAOHONGSHU CONNECTION</p>
+            <h2>先连接账号，再开始经营内容。</h2>
+            <p>登录后，旅图工坊才能读取真实表现、发现赛道机会，并把审核通过的图文准备到最终发布按钮之前。</p>
+            <div class="login-status-card" id="homeLoginStatus"><i></i><div><b>正在检查连接状态</b><small>不会读取或保存你的密码</small></div></div>
+            <button class="primary login-cta" id="homeConnectXhs">连接小红书创作服务平台</button>
+            <button class="ghost login-retry" id="homeCheckXhs">我已登录，重新检查</button>
+            <p class="login-error" id="homeLoginError"></p>
+          </section>
+          <aside class="login-capabilities">
+            <p class="eyebrow">AFTER CONNECTION</p>
+            <h3>一个登录，打通四条真实链路</h3>
+            <div><span>01</span><b>自身数据</b><small>每5分钟读取创作中心可见指标</small></div>
+            <div><span>02</span><b>赛道观察</b><small>按关键词读取公开搜索内容</small></div>
+            <div><span>03</span><b>即时微调</b><small>根据连续真实快照调整内容变量</small></div>
+            <div><span>04</span><b>发布前准备</b><small>图片、标题、正文填好，由你最终发布</small></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="todayView">
+        <div class="status-strip"><span class="status">等待审核</span><span id="generatedTime">今天 09:02 生成</span><span>预计审核 3 分钟</span><button id="editTopicBtn">更换选题</button></div>
+        <div class="workspace">
+          <article class="editor-card">
+            <div class="card-head"><div><span class="series" id="seriesLabel">FIRST 24 HOURS</span><h2 id="topicTitle">Your First 24 Hours in Chengdu</h2></div><span class="score">选题分 89</span></div>
+            <label>英文标题</label>
+            <input id="titleInput" value="Your First 24 Hours in Chengdu — No Chinese Needed">
+            <label>正文</label>
+            <textarea id="bodyInput" rows="15"></textarea>
+            <div class="tags" id="tags"></div>
+            <div class="checks">
+              <span>✓ 地名含中文</span><span>✓ 费用单位明确</span><span>✓ 已标核实日期</span><span>✓ 无绝对化承诺</span>
+            </div>
+          </article>
+
+          <aside class="preview-card">
+            <div class="preview-head"><strong>图文预览</strong><span id="imageModeBadge">Seedream 5 Pro · 7张</span></div>
+            <div class="phone">
+              <div class="slides" id="slides"></div>
+              <div class="dots" id="dots"></div>
+            </div>
+            <div class="preview-actions"><button id="prevSlide">←</button><span id="slideCounter">1 / 7</span><button id="nextSlide">→</button></div>
+            <button class="wide" id="regenerateImages">重新生成图片</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="queueView">
+        <div class="section-card"><h2>待审核内容</h2><p class="muted">生成任务只会把内容放进这里。未经你确认，不进入发布步骤。</p><div id="queueList" class="queue-list"></div></div>
+      </section>
+
+      <section class="view" id="discoveryView">
+        <div class="section-card radar-hero">
+          <div><p class="eyebrow">LIVE DEMAND MINING</p><h2>把真实公开内容变成可执行选题</h2><p class="muted">读取小红书公开搜索结果 → 聚类需求 → 判断内容缺口 → 生成导览计划。</p></div>
+          <button class="primary" id="mineSignals">同步真实需求</button>
+        </div>
+        <div class="mining-pipeline">
+          <div><b>01</b><span>公开采集</span><small>小红书真实搜索结果</small></div><i>→</i><div><b>02</b><span>意图聚类</span><small>焦虑 · 决策 · 向往</small></div><i>→</i><div><b>03</b><span>内容缺口</span><small>重复问题 · 缺失信息</small></div><i>→</i><div><b>04</b><span>进入日历</span><small>选题 · 角度 · 三维计划</small></div>
+        </div>
+        <div class="radar-layout">
+          <div class="section-card"><div class="section-title"><div><h2>真实需求信号</h2><p class="muted" id="signalState">尚未采集。连接小红书并运行需求挖掘。</p></div><span class="data-state" id="signalCount">0 条</span></div><div id="signalList" class="signal-list"></div></div>
+          <div class="section-card"><h2>真实数据原则</h2><div class="score-formula"><strong>只展示平台返回值</strong><span>·</span><b>公开互动</b><span>·</span><b>标题与内容原文</b><span>·</span><b>采集时间</b></div><div class="source-stack"><label><input type="checkbox" checked disabled> 小红书公开搜索结果（已接入）</label><label><input type="checkbox" disabled> 创作中心评论（等待页面授权）</label><label><input type="checkbox" disabled> 海外旅行社区（尚未接入）</label><label><input type="checkbox" disabled> 搜索趋势（尚未接入）</label></div></div>
+        </div>
+      </section>
+
+      <section class="view" id="calendarView">
+        <div class="section-card"><div class="calendar-head"><div><h2>未来 12 周内容路线</h2><p class="muted">北京时间排期 · 从基础生存到城市深度体验，按主题季度推进。</p></div><div class="calendar-actions"><select id="calendarHorizon"><option value="28">未来 4 周</option><option value="56">未来 8 周</option><option value="84" selected>未来 12 周</option></select><button class="ghost" id="refreshPlan">重新规划</button></div></div><div class="quarter-roadmap" id="quarterRoadmap"></div><div id="calendarGrid" class="calendar-grid long-calendar"></div></div>
+      </section>
+
+      <section class="view" id="analyticsView">
+        <div class="analytics-toolbar"><div><p class="eyebrow">LIVE MEDIA INTELLIGENCE</p><h2>内容经营分析</h2></div><div><span class="connection-status" id="xhsStatus">小红书未连接</span><button class="ghost" id="connectXhs">登录小红书</button><button class="primary" id="refreshOwnData">即时同步</button></div></div>
+        <div class="analysis-switch"><button class="active" data-analysis="own">自身账号</button><button data-analysis="market">他人 / 赛道</button><span id="analyticsCapturedAt">没有真实快照</span></div>
+        <div class="metric-cards" id="metricCards"></div>
+        <div class="analytics-grid analysis-panel active" id="ownAnalysis">
+          <div class="section-card wide-panel"><div class="section-title"><div><h2>真实表现快照</h2><p class="muted">自动读取创作中心当前可见数据；保留北京时间快照以观察变化。</p></div><span class="data-state" id="ownDataState">等待同步</span></div><div id="trendChart" class="trend-chart empty-chart"></div></div>
+          <div class="section-card"><h2>可见指标</h2><div id="funnelChart" class="funnel empty-chart"></div></div>
+          <div class="section-card"><h2>即时微调建议</h2><div id="dimensionTable" class="recommendation-list"></div></div>
+          <div class="section-card wide-panel"><div class="section-title"><div><h2>数据埋点</h2><p class="muted">记录从选题、生成、审核到发布后的全链路。</p></div><button class="ghost small-button" id="exportEvents">导出事件</button></div><div id="eventSchema" class="event-schema"></div></div>
+        </div>
+        <div class="analytics-grid analysis-panel" id="marketAnalysis">
+          <div class="section-card market-query"><h2>他人 / 赛道自动读取</h2><p class="muted">输入最多5个搜索词，用公开搜索结果分析标题、题材与公开互动。不会伪造缺失指标。</p><label>监测关键词<input id="marketKeywords" value="外国人中国旅游, China travel, 成都旅行攻略"></label><button class="primary wide" id="scanMarket">读取公开数据</button></div>
+          <div class="section-card"><h2>采集状态</h2><div id="marketStatus" class="empty-state">尚未采集真实公开数据。</div></div>
+          <div class="section-card market-results"><div class="section-title"><h2>公开内容样本</h2><span class="data-state" id="marketCount">0 条</span></div><div id="marketTable"></div></div>
+        </div>
+      </section>
+
+      <section class="view" id="agentView">
+        <div class="agent-topline"><div><p class="eyebrow">LOCAL AGENT RUNTIME</p><h2>模型、Skill 与工具装配</h2><p class="muted">所有调用从本地终端发起；生成内容进入审核队列。</p></div><button class="ghost" id="refreshCapabilities">重新检测</button></div>
+        <div class="capability-grid" id="capabilityGrid"></div>
+        <div class="agent-grid">
+          <section class="section-card"><h2>内容模型</h2><label>执行供应商<select id="agentProvider"><option value="codex">Codex CLI（优先）</option><option value="deepseek">DeepSeek API</option><option value="ollama">Ollama / 本地模型</option><option value="custom">OpenAI 兼容接口</option></select></label><div class="field-row"><label>模型<select id="agentModel"><option>gpt-5.6-sol</option><option>gpt-6-astra</option><option>gpt-5.6-terra</option><option>自定义</option></select></label><label>思考强度<select id="reasoningEffort"><option value="medium">Medium · 日常生成</option><option value="high">High · 选题与核验</option><option value="xhigh">XHigh · 深度策划</option><option value="low">Low · 快速改写</option></select></label></div><p class="hint">调用将映射为 Codex CLI 的 model 与 model_reasoning_effort 配置。</p></section>
+          <section class="section-card"><div class="section-title"><h2>Skill 装配</h2><button class="ghost small-button" id="openSkillFolder">打开目录</button></div><div id="skillAssembly" class="skill-assembly"></div></section>
+          <section class="section-card"><h2>生图工具链</h2><p class="muted">可同时启用多项，并按顺序回退或混合使用。</p><div class="tool-checks" id="imageToolChecks"><label><input type="checkbox" value="tapnow" checked><span><b>TapNow 本地</b><small>Seedream 5 Pro · 优先</small></span></label><label><input type="checkbox" value="api" checked><span><b>生图 API</b><small>接口失败时回退</small></span></label><label><input type="checkbox" value="licensed"><span><b>授权图片库</b><small>保留来源与许可</small></span></label><label><input type="checkbox" value="official"><span><b>官方媒体素材</b><small>景点与机构图源</small></span></label></div><label>组合策略<select id="imageBlend"><option>场景图AI生成 + 信息页程序排版</option><option>网络实景 + AI补充氛围图</option><option>全部AI生成并保持统一风格</option><option>优先网络授权图，缺失时AI生成</option></select></label></section>
+          <section class="section-card"><h2>Agent 流程</h2><div class="agent-flow"><span>需求雷达</span><i>→</i><span>选题评分</span><i>→</i><span>事实核验</span><i>→</i><span>Skill写作</span><i>→</i><span>多源生图</span><i>→</i><span>人工审核</span></div><button class="primary wide" id="runAgentTest">运行一次本地生成测试</button><pre id="agentLog">等待运行…</pre></section>
+        </div>
+      </section>
+
+      <section class="view" id="settingsView">
+        <form class="settings-grid" id="settingsForm">
+          <section class="section-card"><h2>内容方向</h2>
+            <div class="skill-active"><span>✓</span><div><strong>China Inbound Travel Editorial</strong><small>内容 Skill 已启用 · 导览叙事 + 国际化语气 + 分页视觉结构</small></div></div>
+            <div class="field-row"><label>主城市<input name="city" value="成都"></label><label>输出语言<select name="language"><option>英文为主 + 中文地名</option><option>纯英文</option><option>中英双语</option></select></label></div>
+            <label>目标游客<select name="audience"><option>第一次来中国、不会中文的自由行游客</option><option>独自旅行者</option><option>年轻情侣</option><option>亲子家庭</option><option>预算型背包客</option></select></label>
+            <label>内容基调<select name="tone"><option>友好、具体、像本地朋友</option><option>精炼、工具书式</option><option>轻松、有幽默感</option><option>高端、审美导向</option></select></label>
+            <div class="field-row"><label>导览叙事<select name="storyArc"><option>兴趣 → 行动 → 理解 → 保存</option><option>问题 → 选择 → 路线 → 备用方案</option><option>场景 → 文化 → 实用信息 → 清单</option></select></label><label>表情与符号<select name="emojiLevel"><option>克制：每篇 2–5 个</option><option>极简：只用功能符号</option><option>活泼：每页最多 1 个</option></select></label></div>
+            <div class="coordinate-settings"><label>默认时长<select name="planDuration"><option>3–5 小时 · 半日</option><option>1–2 小时 · 单一体验</option><option>6–9 小时 · 一日</option><option>2–3 天 · 城市入门</option></select></label><label>默认预算<select name="planBudget"><option>¥80–150 / 人</option><option>¥0–80 / 人</option><option>¥150–400 / 人</option><option>¥400+ / 人</option></select></label><label>执行难度<select name="planDifficulty"><option>Easy · 首次来华可执行</option><option>Moderate · 需要少量准备</option><option>Complex · 多个执行难点</option></select></label></div>
+          </section>
+          <section class="section-card"><h2>图片策略</h2>
+            <div class="multi-source-settings" id="imageMode"><label><input type="checkbox" name="imageTapnow" checked> TapNow / Seedream 5 Pro</label><label><input type="checkbox" name="imageApi" checked> 生图 API 回退</label><label><input type="checkbox" name="imageWeb"> 授权网络图片</label><label><input type="checkbox" name="imageOfficial"> 官方媒体素材</label></div>
+            <div class="field-row"><label>图片供应商<select name="imageProvider"><option>TapNow / Seedream 5 Pro</option><option>OpenAI Images</option><option>自定义 API</option></select></label><label>每篇张数<select name="imageCount"><option>7</option><option>6</option><option>8</option><option>9</option></select></label></div>
+            <label>固定视觉风格<textarea name="visualStyle" rows="4">Editorial travel poster, warm natural light, restrained red accent, cream paper texture, clean negative space for English typography, documentary realism, vertical 3:4</textarea></label>
+            <label>网络图片许可<select name="license"><option>仅使用可商用或明确授权素材</option><option>只使用官方机构媒体库</option><option>人工确认版权后使用</option></select></label>
+          </section>
+          <section class="section-card"><h2>生成与审核</h2>
+            <div class="field-row"><label>每日生成时间<input name="generateTime" type="time" value="09:00"></label><label>发布方式<select name="publishMode"><option>每天审核后发布</option><option>只导出发布包</option><option>审核后进入定时发布</option></select></label></div>
+            <label class="toggle"><input name="factCheck" type="checkbox" checked><span></span>生成前联网核实价格、开放时间和预约要求</label>
+            <label class="toggle"><input name="duplicateCheck" type="checkbox" checked><span></span>与历史选题、标题和正文检查重复</label>
+            <label class="toggle"><input name="aiLabel" type="checkbox" checked><span></span>保留AI图片来源和生成记录</label>
+            <label>任务时区<input value="Asia/Shanghai · 北京时间 UTC+8" disabled></label>
+          </section>
+          <section class="section-card"><h2>接口连接</h2>
+            <label>TapNow API 地址<input name="tapnowEndpoint" placeholder="例如：http://127.0.0.1:.../generate"></label>
+            <label>模型名称<input name="tapnowModel" value="seedream-5-pro"></label>
+            <label>API Key<input name="tapnowKey" type="password" placeholder="保存在本机浏览器中"></label>
+            <p class="hint">第一版保存配置并生成任务说明；接入真实接口时由本地服务代理请求，避免把密钥暴露在网页代码中。</p>
+          </section>
+          <div class="save-bar"><span id="saveState">所有设置保存在本机</span><button class="primary" type="submit">保存设置</button></div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="publishDialog">
+    <form method="dialog"><button class="dialog-close">×</button><span class="success-icon">✓</span><h2>准备发布到小红书</h2><p>App 将导出全部卡片、上传图片并填写标题、正文与标签。最后的“发布”按钮由你本人确认。</p><div class="dialog-actions"><button value="cancel" class="ghost">稍后处理</button><button value="default" class="primary" id="publishNow">完成发布前准备</button></div></form>
+  </dialog>
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
